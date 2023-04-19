@@ -1,58 +1,40 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  ScrollView,
-  Dimensions,
-} from 'react-native';
+import {View, StyleSheet, Image, ScrollView} from 'react-native';
 import Button from '../components/Button';
 import PeopleWalkImg from '../assets/img/4468809.jpg';
+import Pembuka from '../components/Home/KalimatPembuka';
+import AppTheme from '../styles';
 
-function Home({navigation}) {
-  const {height, width} = Dimensions.get('window');
-
-  const Pembuka = () => {
-    return (
-      <View style={{padding: 30, marginTop: 0}}>
-        <Text style={styles.slogan}>
-          Dimanapun kamu, pesan kost D’paragon kini lebih mudah
-        </Text>
-        <Text style={styles.content}>
-          Nikmati layanan maksimal dari D’paragon , pesan kamar kost lebih mudah
-          lewat aplikasi terbaru dengan tampilan yang lebih menarik .{' '}
-        </Text>
-      </View>
-    );
-  };
+const Home = ({navigation}) => {
+  const styles = StyleSheet.create({
+    images: {
+      width: AppTheme.screen.width,
+      height: '100%',
+      position: 'absolute',
+    },
+    div: {
+      height: '100%',
+      justifyContent: 'flex-end',
+      padding: 12,
+    },
+  });
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView>
       <View>
         <Pembuka />
-        <View style={{height: height * 0.7}}>
-          <Image
-            source={PeopleWalkImg}
-            style={{
-              width: width,
-              height: '100%',
-              position: 'absolute',
-            }}
-          />
-          <View
-            style={{
-              // borderColor: 'red',
-              // borderWidth: 8,
-              height: '100%',
-              justifyContent: 'flex-end',
-              padding: 12,
-            }}>
+        <View style={{height: AppTheme.screen.height * 0.7}}>
+          <Image source={PeopleWalkImg} style={styles.images} />
+          <View style={styles.div}>
             <Button
               title="Pesan Sekarang !"
               isShadow
               color={'blue'}
+              // eslint-disable-next-line no-alert
               onPress={() => alert('Fitur Belum Tersedia')}
+              nameIcon={'github'}
+              sizeIcon={30}
+              colorIcon={'white'}
             />
             <View>
               <Button
@@ -65,20 +47,6 @@ function Home({navigation}) {
       </View>
     </ScrollView>
   );
-}
+};
 
 export default Home;
-
-const styles = StyleSheet.create({
-  container: {},
-  slogan: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: 'black',
-  },
-  content: {
-    fontSize: 13,
-    color: 'gray',
-    marginTop: 18,
-  },
-});
