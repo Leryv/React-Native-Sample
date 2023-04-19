@@ -2,7 +2,7 @@ import React from 'react';
 import {TouchableOpacity, Text, StyleSheet, View} from 'react-native';
 import AppTheme from '../styles';
 
-const RoundedButton = ({title, color, isShadow, style}) => {
+const RoundedButton = ({title, color, isShadow, onPress}) => {
   const styles = StyleSheet.create({
     roundedButton: {
       backgroundColor: color ? color : AppTheme.color.second,
@@ -21,7 +21,7 @@ const RoundedButton = ({title, color, isShadow, style}) => {
 
   return (
     <View>
-      <TouchableOpacity style={styles.roundedButton}>
+      <TouchableOpacity style={styles.roundedButton} onPress={onPress}>
         <Text style={styles.roundedText}>{title}</Text>
       </TouchableOpacity>
     </View>
